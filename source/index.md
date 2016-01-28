@@ -1,14 +1,13 @@
 ---
-title: API Reference
+title: Zapiet PUDO API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
+  - shell: cURL
+  - php: PHP
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='https://apps.shopify.com/click-and-collect'>Start 14 day free trial of Zapiet now!</a>
 
 includes:
   - errors
@@ -18,11 +17,9 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Zapiet PUDO API. You can use this API to integrate your PUDO (pickup/dropoff) services directly into our platform.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We have language bindings in Shell and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 # Authentication
 
@@ -57,6 +54,187 @@ Kittn expects for the API key to be included in all API requests to the server i
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
+
+# Accounts 
+
+## Get Accounts
+Receive a list of all Accounts which have your services installed.
+
+### HTTP Request
+`GET https://api.zapiet.com/v2.0/services/accounts`
+
+## Get Account
+Receive a single Account.
+
+### HTTP Request
+`GET https://api.zapiet.com/v2.0/services/accounts/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Account to retrieve
+
+## Activate
+Activates your services on the specific Account.
+
+### HTTP Request
+`POST https://api.zapiet.com/v2.0/services/accounts/#{id}/activate`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Account you wish to activate your services on
+
+## Deactivate
+Deactivates your service on a specific Account.
+
+### HTTP Request
+`POST https://api.zapiet.com/v2.0/services/accounts/#{id}/deactivate`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+account_id | The ID of the Account account you wish to remove your services from
+
+# Locations 
+
+## Get Locations
+Receive a list of all your Locations you've added to Zapiet.
+
+### HTTP Request
+`GET https://api.zapiet.com/v2.0/services/locations`
+
+## Get Location
+Receive a specific Location you have added to Zapiet.
+
+### HTTP Request
+`GET https://api.zapiet.com/v2.0/services/locations/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Location to retrieve
+
+## Create Location
+Creates a new Location within Zapiet.
+
+### HTTP Request
+`POST https://api.zapiet.com/v2.0/services/locations`
+
+## Update Location 
+Updates an existing Location within Zapiet.
+
+### HTTP Request
+`PUT https://api.zapiet.com/v2.0/services/locations/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Location to update
+
+## Delete Location
+Delete an existing Location.
+
+`DELETE https://api.zapiet.com/v2.0/services/locations/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Location to delete
+
+# Orders
+
+## Get Orders
+Receive all Orders.
+
+### HTTP Request
+`GET https://api.zapiet.com/v2.0/services/orders`
+
+Parameter | Default | Description
+--------- | ------- | -----------
+limit | 50 | Amount of results to return, maximum 250
+page | 1 | Page to show
+last_order_id | | Restrict results to after the specified ID
+status | open | open - All open orders<br>closed - Show only closed orders<br>cancelled - Show only cancelled orders<br>any - Any order status
+
+## Get Order
+Receive a specific Order.
+
+### HTTP Request
+`GET https://api.zapiet.com/v2.0/services/orders/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Order to retrieve
+
+## Update Order
+Updates an existing Order.
+
+### HTTP Request
+`PUT https://api.zapiet.com/v2.0/services/orders/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Order to update
+
+# Webhooks
+
+## Get Webhooks
+Receive a list of all Webhooks.
+
+### HTTP Request
+`GET https://api.zapiet.com/v2.0/services/webhooks`
+
+## Get Webhook
+Receive a specific Webhook.
+
+### HTTP Request
+`GET https://api.zapiet.com/v2.0/services/webhooks/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Webook to retrieve
+
+## Create Webhook
+Creates a new Webhook.
+
+### HTTP Request
+`POST https://api.zapiet.com/v2.0/services/webhooks`
+
+## Update Webhook
+Updates an existing Webhook.
+
+### HTTP Request
+`PUT https://api.zapiet.com/v2.0/services/webhooks/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Webhook to update
+
+## Delete Webhook
+Delete an existing Webhook.
+
+`DELETE https://api.zapiet.com/v2.0/services/webhooks/#{id}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | The ID of the Webhook to delete
 
 # Kittens
 
